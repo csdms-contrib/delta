@@ -1,0 +1,11 @@
+12345678901234567890123456789012345678901234567890123456789012345678901234567890
+im,jm,km: # nodes in x and y; # timesteps (I5)             >   20<>   20<>   14<
+Timestep in seconds (F10.3)                                     >2.52288E08<
+Spacestep in meters (F10.3)                                     >    200.0  <
+Flow velocity at river mouth (m/s) (F10.3)                      >    0.28  <
+Width and depth of river mouth (m) (F10.3)            >   200.0  < >    4.0   <
+Diffusion constants in the x and y direction (F10.3)  >0.00000001< > 0.00002  <
+Elevation above datum (0.0) of sea level (m) (F10.3)            >    60.0  <
+Bedload dumping rate (m/s) (E10.3)                              > 6.0E-09  <
+Concentration (gm/m**3) of coarse and med silt (F10.3)>   150.0  < >   50.0   <
+Concentration (gm/m**3) of fine silt and clay  (F10.3)>    50.0  < >   54.0   <

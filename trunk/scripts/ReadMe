@@ -1,0 +1,6 @@
+flow.gmt 		(velocity field at given timestep)
+plan.gmt 		(plan view of delta at given timestep)
+long.gmt 		(longitudinal cross section at given timestep)
+longTrace.gmt 	(long. sections for various timesteps combined)
+trans.gmt
+transTrace.gmt 	(as previous for transverse section)
