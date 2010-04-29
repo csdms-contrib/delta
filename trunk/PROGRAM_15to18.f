@@ -497,7 +497,7 @@ C------------------------------------------------------------------------
       Real*8 TINY
       PARAMETER (NMAX=1000,TINY=1.0E-20)
       Real*8 A(NP,NP),VV(NMAX),D,aamax,sum,dum
-      Integer*2 indx(n),np,n,j,i,k,imax
+      Integer*2 indx(n),j,i,k,imax
       D = 1.
       DO 2 I = 1, N
          AAMAX = 0.
@@ -567,7 +567,7 @@ C------------------------------------------------------------------------
       Implicit None
       Integer*2 N,NP
       real*8 A(NP,NP),B(N),SUM
-      Integer*2 INDX(N),II,I,N,LL,J,NP
+      Integer*2 INDX(N),II,I,LL,J
       II = 0
       DO 2 I = 1, N
          LL = INDX(I)
