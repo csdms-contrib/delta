@@ -1,10 +1,9 @@
 
 GFORTRAN=gfortran
-#FFLAGS=-Wall
 FFLAGS=
 PROG=deltas
 VERSION=0.1
-SOURCES= PROGRAM_15to18.f
+SOURCES= deltas.f
 OBJS=${SOURCES:.f=.o}
 
 all: ${PROG}
