@@ -1,7 +1,7 @@
 
 GFORTRAN=gfortran
 FFLAGS=
-PROG=DELTA
+PROG=delta
 VERSION=0.1
 EXTRA_DIST= data/input.dat \
             scripts/ReadMe \
