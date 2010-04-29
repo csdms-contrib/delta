@@ -1,7 +1,7 @@
 
 GFORTRAN=gfortran
 FFLAGS=
-PROG=deltas
+PROG=DELTA
 VERSION=0.1
 EXTRA_DIST= data/input.dat \
             scripts/ReadMe \
@@ -12,7 +12,7 @@ EXTRA_DIST= data/input.dat \
             scripts/plan.gmt \
             scripts/trans.gmt \
             scripts/transTrace.gmt
-SOURCES= deltas.f
+SOURCES= delta.f
 OBJS=${SOURCES:.f=.o}
 
 all: ${PROG}
