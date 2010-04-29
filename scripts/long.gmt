@@ -1,0 +1,41 @@
+#
+#
+timestep=09
+
+jOfSection=10
+
+im=20
+jm=20
+
+maxElevation=100
+
+
+# -----------------------------------------------
+gmtset ANOT_FONT_SIZE  12
+gmtset LABEL_FONT_SIZE 15
+gmtset HEADER_FONT_SIZE 20
+
+wi0=1/$im/1/$jm
+wi=1/$im/0/$maxElevation
+pr=X15/10
+
+fig=long_$timestep\.eps
+
+
+xyz2grd H_$timestep\.z -Z -I1 -R$wi0 -Gh.grd
+grd2xyz h.grd | awk '($2 == '$jOfSection') {print $1, $3}' > h.xy
+
+psbasemap -R$wi -J$pr \
+ -Ba5f1:"i-node":/a10f5:"Elevation [m]"::."Longitudinal Section at Timestep $timestep": \
+ -K > $fig
+
+psxy h.xy -J$pr -R$wi -W1p -O -K >> $fig
+
+cat << EOF | pstext -Jx1 -R0/30/0/30 -O -K >> $fig
+14 9 12 0 0 TR Section at j = $jOfSection
+EOF
+
+psbasemap -R$wi -J$pr -Bo -O >> $fig
+
+rm h.grd
+#rm h.xy

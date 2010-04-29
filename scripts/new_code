@@ -1,0 +1,25 @@
+c
+c PThM: new write section (requires char*2 variable "ext2")
+c
+
+         write (ext2,'(i2.2)') k
+
+         open (12,file='U_'//ext2//'.z')
+         open (13,file='V_'//ext2//'.z')
+         open (14,file='R_'//ext2//'.z')
+         open (15,file='H_'//ext2//'.z')
+
+         do j= JM,1,-1
+            do i= 1,IM
+               write (12,*) U(i,j)
+               write (13,*) V(i,j)
+               write (14,*) R(i,j)
+               write (15,*) H(i,j)
+            end do
+         end do
+         close (12)
+         close (13)
+         close (14)
+         close (15)
+
+
