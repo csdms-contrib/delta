@@ -1,0 +1,45 @@
+#
+#
+timesToShow='01 02 03 04 05 06 07 08 09'
+
+iOfSection=2
+
+im=20
+jm=20
+
+maxElevation=100
+
+
+# -----------------------------------------------
+gmtset ANOT_FONT_SIZE  12
+gmtset LABEL_FONT_SIZE 15
+gmtset HEADER_FONT_SIZE 20
+
+wi0=1/$im/1/$jm
+wi=1/$jm/0/$maxElevation
+pr=X15/10
+
+fig=transTrace.eps
+
+
+psbasemap -R$wi -J$pr \
+ -Ba5f1:"j-node":/a10f5:"Elevation [m]"::."Transverse Section": \
+ -K > $fig
+
+for timestep in $timesToShow
+do
+
+xyz2grd H_$timestep\.z -Z -I1 -R$wi0 -Gh.grd
+grd2xyz h.grd | awk '($1 == '$iOfSection') {print $2, $3}' > h.xy
+
+psxy h.xy -J$pr -R$wi -W1p -O -K >> $fig
+
+rm h.grd h.xy
+
+done
+
+cat << EOF | pstext -Jx1 -R0/30/0/30 -O -K >> $fig
+14 9 12 0 0 TR Section at i = $iOfSection
+EOF
+
+psbasemap -R$wi -J$pr -Bo -O >> $fig

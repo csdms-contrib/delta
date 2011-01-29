@@ -1,0 +1,34 @@
+#
+#
+timestep=09
+
+contour_interval=2
+annotation_interval=10
+
+
+wi=1/20/1/20
+pr=x0.75
+# --------------------------
+gmtset ANOT_FONT_SIZE  12
+gmtset LABEL_FONT_SIZE 15
+gmtset HEADER_FONT_SIZE 20
+
+fig=plan_$timestep\.eps
+
+
+xyz2grd H_$timestep\.z -Z -I1 -R$wi -Gh.grd
+
+psbasemap -R$wi -J$pr \
+ -Ba5f1:"i-node":/:"j-node"::."Plan View at Timestep $timestep": \
+ -K > $fig
+
+grdcontour h.grd -C$contour_interval -A$annotation_interval \
+ -G2c/10 -R$wi -J$pr -O -K >> $fig
+
+cat << EOF | pstext -Jx1 -R0/30/0/30 -O -K >> $fig
+0.5 0.5 12 0 0 BL Contour interval = $contour_interval meter
+EOF
+
+psbasemap -R$wi -J$pr -Bo -O >> $fig
+
+rm h.grd

@@ -1,0 +1,35 @@
+#
+#
+timestep=01
+
+# give scale for vectors: 1 cm corresponds to "scale" m/s
+#
+scale=0.25
+
+wi=1/20/1/20
+pr=x0.75
+# --------------------------
+gmtset ANOT_FONT_SIZE  12
+gmtset LABEL_FONT_SIZE 15
+gmtset HEADER_FONT_SIZE 20
+
+
+fig=flow_$timestep\.eps
+
+
+xyz2grd U_$timestep\.z -Z -I1 -R$wi -Gu.grd
+xyz2grd V_$timestep\.z -Z -I1 -R$wi -Gv.grd
+
+psbasemap -R$wi -J$pr \
+ -Ba5f1:"i-node":/:"j-node"::."Flow Field at Timestep $timestep": \
+ -K > $fig
+
+grdvector u.grd v.grd -Q0.075c/0.3c/0.15c -R$wi -J$pr -G128 -S0.30 -O -K >> $fig
+
+cat << EOF | pstext -Jx1 -R0/30/0/30 -O -K >> $fig
+15.5 1 12 0 0 BL Vector scale: 1 cm = $scale m/s
+EOF
+
+psbasemap -R$wi -J$pr -Bo -O >> $fig
+
+rm u.grd v.grd
